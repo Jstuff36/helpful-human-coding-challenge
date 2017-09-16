@@ -9,6 +9,5 @@ document.addEventListener('DOMContentLoaded', () => {
     let store;
     store = configureStore();
     const root = document.getElementById('root');
-    ReactDOM.render(<h1>Welcome to BenchBnB</h1>, root);
-    // ReactDOM.render(<Root store={store} />, root);
+    ReactDOM.render(<Root store={store} />, root);
 });

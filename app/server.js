@@ -1,4 +1,4 @@
-const configDB = require('./config/database.js');
+const configDB = require('../config/database.js');
 
 var express = require('express'),
     app = express(),
@@ -10,14 +10,12 @@ var express = require('express'),
 // mongoose.Promise = global.Promise;
 mongoose.connect(configDB.url, { useMongoClient: true });
 
-
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
+app.use(express.static('public'));
 
 var routes = require('./api/routes/colorsRoutes');
 routes(app);
-
 
 app.listen(port);
 
