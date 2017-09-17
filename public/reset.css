@@ -44,34 +44,3 @@ input[type="submit"] {
   content: "";
   display: block;
   clear: both; }
-
-.navbar-container {
-  height: 80px;
-  background: #363c3c;
-  display: flex;
-  justify-content: space-between;
-  align-items: center; }
-
-.search-bar {
-  height: 30px;
-  border-radius: 7px;
-  width: 250px;
-  margin-right: 25px;
-  font-size: 20px;
-  padding: 10px 15px 10px 15px;
-  background: white; }
-
-.icon {
-  margin-left: 25px; }
-
-.edit-placeholder::placeholder {
-  color: #929292; }
-
-.edit-placeholder::-moz-placeholder {
-  color: #b2b2b2; }
-
-.edit-placeholder:-ms-input-placeholder {
-  color: #b2b2b2; }
-
-.edit-placeholder:-moz-placeholder {
-  color: #b2b2b2; }
