@@ -8,6 +8,7 @@ module.exports = function (app) {
         res.sendFile(path.resolve(__dirname + '/../../index.html'));
     });
 
-    app.route('/colors')
-        .get(colors.list_all_colors);
+    app.route('/api/colors')
+        .get(colors.list_all_colors)
+        .post(colors.add_a_color);
 };

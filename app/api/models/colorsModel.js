@@ -1,12 +1,12 @@
 'use strict';
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+let mongoose = require('mongoose');
+let Schema = mongoose.Schema;
 
 
-var ColorSchema = new Schema({
-    hex: {
+let ColorSchema = new Schema({
+    color: {
         type: String,
-        required: 'Hex value required'
+        required: 'Color value required'
     },
     Created_date: {
         type: Date,
