@@ -1,8 +1,12 @@
 import React from 'react';
+import ColorsContainer from './colors/colors_container';
+import {
+    Route
+} from 'react-router-dom';
 
 const App = () => (
     <div>
-        Reactified
+        <Route exact path="/" component={ColorsContainer} />
     </div>
 );
 
