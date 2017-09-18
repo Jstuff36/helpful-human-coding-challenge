@@ -29,17 +29,29 @@ class ColorsListView extends React.Component {
         if (!this.state.colors) {
             return null;
         } else {
-            const { width, height } = this.props.size;
+            let { width } = this.props.size;
+            let height = this.props.size.height - 20;
+            console.log(height);
+            let colors = this.state.colors;
+            let numWindows;
+            if (width < 800) {
+                numWindows = Math.floor(width / 250) * Math.floor(height / 250);
+            } else {
+                numWindows = Math.floor(width / 225) * Math.floor(height / 225);
+            }
+            let numNumbers = [];
+            for (let i = 1; i < Math.ceil(colors.length / numWindows); i++ ) {
+                numNumbers.push(i);
+            }
             return( 
                 <div className="list-view-container">
                     <ul className="colors-sub-container">
-                        {this.state.colors.slice(0, 20).map((color, idx) => (
+                        {colors.slice(0, numWindows).map((color, idx) => (
                             <li
                                 key={idx}>
                                 <div 
                                     className="indv-color"
                                     style={{background: color.value}}>
-
                                 </div>
                                 <div>
                                     {color.value }
@@ -47,6 +59,15 @@ class ColorsListView extends React.Component {
                             </li>
                         ))}
                     </ul>
+                    <div>
+                        <ul className="numbers-container">
+                            {numNumbers.map((number, idx) => (
+                                <li key={idx}>
+                                    {number}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
             );
         }
