@@ -14,7 +14,8 @@ export const addColor = (color) => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            color: color
+            name: color.name,
+            value: color.value
         })
     });
 };

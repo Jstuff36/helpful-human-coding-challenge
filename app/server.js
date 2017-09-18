@@ -1,14 +1,15 @@
-const configDB = require('../config/database.js');
-let express = require('express');
-let app = express();
-let port = process.env.PORT || 3000;
-let mongoose = require('mongoose');
-let Color = require('./api/models/colorsModel');
-let bodyParser = require('body-parser');
+const express = require('express');
+const app = express();
+const port = process.env.PORT || 8080;
+const mongoose = require('mongoose');
+const Color = require('./api/models/colorsModel');
+const bodyParser = require('body-parser');
 
-mongoose.Promise = global.Promise;
-console.log(configDB.url);
-mongoose.connect(configDB.url, { useMongoClient: true });
+const MongoClient = require('mongodb').MongoClient;
+
+MongoClient.connect('mongodb://username1:password123@ds139954.mlab.com:39954/colors-db-hh', (err, db) => {
+    if (err) return console.log(err);
+});
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -17,7 +18,6 @@ app.use(express.static('public'));
 let routes = require('./api/routes/colorsRoutes');
 routes(app);
 
-app.listen(port);
-
-
-console.log('running on: ' + port);
+app.listen(port, () => {
+    console.log('running on: ' + port);
+});

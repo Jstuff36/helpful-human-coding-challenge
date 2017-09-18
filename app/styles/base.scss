@@ -1,3 +1,8 @@
 @import "./reset.scss";
 @import "./navbar.scss";
 @import "./sidebar.scss";
+@import "./listview.scss";
+
+.list-view-main-container {
+    display: flex;
+}

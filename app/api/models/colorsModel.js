@@ -4,7 +4,11 @@ let Schema = mongoose.Schema;
 
 
 let ColorSchema = new Schema({
-    color: {
+    name: {
+        type: String,
+        required: 'Color name required'
+    },
+    value: {
         type: String,
         required: 'Color value required'
     },

@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import NavBar from './navbar';
 import SideBar from './sidebar';
+import ColorsListView from './colors_list_view';
 
 class Colors extends React.Component {
     constructor(props) {
@@ -12,7 +13,12 @@ class Colors extends React.Component {
         return(
             <div>
                 <NavBar/>
-                <SideBar/>
+                <div className="list-view-main-container">
+                    <SideBar/>
+                    <ColorsListView
+                        allColors = {this.props.allColors}
+                        colors = {this.props.colors}/>
+                </div>
             </div>
         );
     }

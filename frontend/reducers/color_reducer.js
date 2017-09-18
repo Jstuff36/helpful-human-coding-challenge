@@ -5,7 +5,7 @@ import {
 } from '../actions/colors_actions';
 
 const noColors = Object.freeze({
-    colors: []
+    colors: null
 });
 
 const ColorsReducer = (state = noColors, action) => {
