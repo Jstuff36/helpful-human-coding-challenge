@@ -2,12 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import sizeMe from 'react-sizeme';
 
+import MultiColors from './display_multi_colors';
+
 class ColorsListView extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             colors: null
         };
+
+        this.getDims = this.getDims.bind(this);
+        this.calcNumWindows = this.calcNumWindows.bind(this);
+        this.calcPageNumbers = this.calcPageNumbers.bind(this);
     }
 
     componentDidMount() {
@@ -25,49 +31,47 @@ class ColorsListView extends React.Component {
         // });
     }
 
+    getDims() {
+            let sideBarWidth = document.querySelector('.side-bar-container').clientWidth;
+            let navBarHeight = document.querySelector('.navbar-container').clientHeight;
+            let width = window.innerWidth - sideBarWidth;
+            let height = window.innerHeight - navBarHeight;
+            return([width, height]);
+    }
+
+    calcNumWindows(width, height) {
+        return Math.floor(width / 225) * Math.floor(height / 194);
+    }
+
+    calcPageNumbers(colors, numWindows) {
+        let numNumbers = [];
+        for (let i = 1; i < Math.ceil(colors.length / numWindows); i++) {
+            numNumbers.push(i);
+        }
+        return numNumbers;
+    }
+
     render() {
         if (!this.state.colors) {
             return null;
         } else {
-            let { width } = this.props.size;
-            let height = this.props.size.height - 20;
-            console.log(height);
             let colors = this.state.colors;
-            let numWindows;
-            if (width < 800) {
-                numWindows = Math.floor(width / 250) * Math.floor(height / 250);
-            } else {
-                numWindows = Math.floor(width / 225) * Math.floor(height / 225);
-            }
-            let numNumbers = [];
-            for (let i = 1; i < Math.ceil(colors.length / numWindows); i++ ) {
-                numNumbers.push(i);
-            }
+            let [width, height] = this.getDims();
+            let numWindows = this.calcNumWindows(width, height);
+            let numNumbers = this.calcPageNumbers(colors, numWindows);
             return( 
                 <div className="list-view-container">
-                    <ul className="colors-sub-container">
-                        {colors.slice(0, numWindows).map((color, idx) => (
-                            <li
-                                key={idx}>
-                                <div 
-                                    className="indv-color"
-                                    style={{background: color.value}}>
-                                </div>
-                                <div>
-                                    {color.value }
-                                </div>
+                    <MultiColors
+                        colors={colors}
+                        numWindows={numWindows}
+                    />
+                    <ul className="numbers-container">
+                        {numNumbers.map((number, idx) => (
+                            <li key={idx}>
+                                {number}
                             </li>
                         ))}
                     </ul>
-                    <div>
-                        <ul className="numbers-container">
-                            {numNumbers.map((number, idx) => (
-                                <li key={idx}>
-                                    {number}
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
                 </div>
             );
         }

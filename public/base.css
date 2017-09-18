@@ -79,13 +79,10 @@ input[type="submit"] {
 .side-bar-container {
   display: flex;
   flex-direction: column;
-  width: 33%;
-  height: 100vh;
   background: #D6D8D8;
   align-items: center;
   justify-content: space-around;
-  max-width: 300px;
-  min-width: 170px;
+  min-width: 280px;
   box-shadow: 0 0px 5px #4e4e4e; }
 
 .button-container {
@@ -126,7 +123,8 @@ input[type="submit"] {
   display: flex;
   flex-wrap: wrap;
   padding: 55px 30px;
-  justify-content: center; }
+  justify-content: center;
+  flex: 8; }
 
 .colors-sub-container > li {
   width: 150px;
@@ -150,7 +148,9 @@ input[type="submit"] {
 
 .numbers-container {
   display: flex;
-  justify-content: center; }
+  justify-content: center;
+  flex: 1;
+  align-items: center; }
 
 .numbers-container > li {
   margin: 0 8px; }

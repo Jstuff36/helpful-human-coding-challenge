@@ -7,7 +7,8 @@
   display: flex;
   flex-wrap: wrap;
   padding: 55px 30px;
-  justify-content: center; }
+  justify-content: center;
+  flex: 8; }
 
 .colors-sub-container > li {
   width: 150px;
@@ -31,7 +32,9 @@
 
 .numbers-container {
   display: flex;
-  justify-content: center; }
+  justify-content: center;
+  flex: 1;
+  align-items: center; }
 
 .numbers-container > li {
   margin: 0 8px; }

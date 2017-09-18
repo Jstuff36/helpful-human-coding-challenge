@@ -9,6 +9,7 @@ const MongoClient = require('mongodb').MongoClient;
 
 MongoClient.connect('mongodb://username1:password123@ds139954.mlab.com:39954/colors-db-hh', (err, db) => {
     if (err) return console.log(err);
+    console.log(db);
 });
 
 app.use(bodyParser.urlencoded({ extended: true }));
