@@ -70,27 +70,33 @@ class DetailColorModal extends React.Component {
                         className="modal-tile-color"
                         style={{ background: color }}>
                     </div>
-                    <div>
-                        {color}
+                    <div className="modal-tile-text">
+                        <div>
+                            {color}
+                        </div>
                     </div>
                 </div>
                 <ul className="color-shades-list-container">
                     <li className="color-shades-container">
                         <div
                             className="color-shades"
-                            style={{ background: this.lightenDarkenColor(color, -10000) }}>
+                            style={{ background: this.lightenDarkenColor(color, -15000) }}>
                         </div>
-                        <div>
-                            {this.lightenDarkenColor(color, -10000)}
+                        <div className="color-shades-text">
+                            <div>
+                                {this.lightenDarkenColor(color, -15000)}
+                            </div>
                         </div>
                     </li>
                     <li className="color-shades-container">
                         <div
                             className="color-shades"
-                            style={{ background: this.lightenDarkenColor(color, -5000) }}>
+                            style={{ background: this.lightenDarkenColor(color, -8000) }}>
                         </div>
-                        <div>
-                            {this.lightenDarkenColor(color, -5000)}
+                        <div className="color-shades-text">
+                            <div>
+                                {this.lightenDarkenColor(color, -8000)}
+                            </div>
                         </div>
                     </li>
                     <li className="color-shades-container">
@@ -98,8 +104,10 @@ class DetailColorModal extends React.Component {
                             className="color-shades"
                             style={{ background: color }}>
                         </div>
-                        <div>
-                            {color}
+                        <div className="color-shades-text">
+                            <div>
+                                {color}
+                            </div>
                         </div>
                     </li>
                     <li className="color-shades-container">
@@ -107,8 +115,10 @@ class DetailColorModal extends React.Component {
                             className="color-shades"
                             style={{ background: this.lightenDarkenColor(color, 100) }}>
                         </div>
-                        <div>
-                            {this.lightenDarkenColor(color, 100)}
+                        <div className="color-shades-text">
+                            <div>
+                                {this.lightenDarkenColor(color, 100)}
+                            </div>
                         </div>
                     </li>
                     <li className="color-shades-container">
@@ -116,13 +126,19 @@ class DetailColorModal extends React.Component {
                             className="color-shades"
                             style={{ background: this.lightenDarkenColor(color, 200) }}>
                         </div>
-                        <div>
-                            {this.lightenDarkenColor(color, 200)}
+                        <div className="color-shades-text">
+                            <div>
+                                {this.lightenDarkenColor(color, 200)}
+                            </div>
                         </div>
                     </li>
                 </ul>
-                <button className="close-modal-button">
-                    Clear
+                <button 
+                    onClick={this.props.handleCloseModal}
+                    className="close-modal-button">
+                    <div>
+                        Close
+                    </div>
                 </button>
             </div>
         );

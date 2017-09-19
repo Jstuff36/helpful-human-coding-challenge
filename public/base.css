@@ -124,7 +124,8 @@ input[type="submit"] {
   display: flex;
   flex-wrap: wrap;
   padding: 55px 30px;
-  justify-content: center; }
+  justify-content: center;
+  text-transform: uppercase; }
 
 .colors-mock-container {
   flex: 8; }
@@ -138,6 +139,9 @@ input[type="submit"] {
   align-items: center;
   border-radius: 7px;
   box-shadow: 0px 0px 5px #4e4e4e; }
+
+.colors-sub-container > li:hover {
+  cursor: pointer; }
 
 .indv-color {
   height: 130px;
@@ -160,13 +164,15 @@ input[type="submit"] {
   margin: 0 8px; }
 
 .modal {
-  background: rgba(255, 255, 255, 0.78);
+  background: white;
   width: 90%;
   max-width: 750px;
   height: 90%;
   padding: 30px;
-  border-radius: 5px;
-  color: black; }
+  border-radius: 7px;
+  color: black;
+  border: solid black 1px;
+  text-transform: uppercase; }
 
 .overlay {
   display: flex;
@@ -191,33 +197,69 @@ input[type="submit"] {
   flex-direction: column;
   width: 100%;
   height: 100%;
-  flex: 3;
+  flex: 5;
   align-items: center;
   border-radius: 7px;
   border: solid black 1px; }
 
 .modal-tile-color {
-  height: 85%;
-  width: 100%; }
+  width: 100%;
+  border-radius: 7px 7px 0 0;
+  flex: 4; }
 
-.modal-tile-color + div {
-  color: blue; }
+.modal-tile-text {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 0 0 7px 7px;
+  font-size: 40px; }
+
+.modal-tile-text > div {
+  margin-left: 25px; }
 
 .color-shades {
-  height: 50px;
-  width: 50px; }
+  width: 125px;
+  border-radius: 5px 5px 0 0;
+  flex: 4; }
 
 .color-shades-list-container {
   display: flex;
-  justify-content: space-around;
-  flex: 1; }
+  justify-content: space-between;
+  flex: 1.5;
+  width: 100%;
+  padding-top: 50px; }
 
 .color-shades-container {
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  border: solid black 1px;
+  border-radius: 4px; }
+
+.color-shades-text {
+  background: white;
+  border-radius: 0 0 5px 5px;
+  flex: 1.5;
+  display: flex;
+  align-items: center;
+  font-size: 20px; }
+
+.color-shades-text > div {
+  margin-left: 10px; }
 
 .close-modal-button {
-  flex: 1; }
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; }
+
+.close-modal-button > div {
+  border: solid 1px;
+  padding: 15px 150px;
+  border-radius: 7px;
+  font-size: 25px; }
 
 .list-view-main-container {
   display: flex; }

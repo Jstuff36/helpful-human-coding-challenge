@@ -15,33 +15,20 @@ class MultiColors extends React.Component {
 
         this.handleOpenModal = this.handleOpenModal.bind(this);
         this.handleCloseModal = this.handleCloseModal.bind(this);
-        this.addModalListener = this.addModalListener.bind(this);
-    }
-
-    componentDidMount() {
-        this.addModalListener();
     }
 
     handleOpenModal(content) {
-        this.setState({
-            showModal: true,
-            modalContent: content
-        });
+        return () => {
+            this.setState({
+                showModal: true,
+                modalContent: content
+            });
+        };
     }
 
     handleCloseModal() {
         this.setState({ showModal: false });
     }
-
-    addModalListener() {
-        let colors = document.querySelectorAll('.colors-sub-container > li');
-        colors.forEach((color) => {
-            color.addEventListener('click', () => {
-                this.handleOpenModal(color.textContent);
-            });
-        });
-    }
-
 
     render() {
         const colors = this.props.colors;
@@ -56,11 +43,13 @@ class MultiColors extends React.Component {
                     overlayClassName="overlay">
                     <DetailColorModal
                         modalContent={this.state.modalContent}
+                        handleCloseModal={this.handleCloseModal}
                     />
                 </Modal>
                 <ul className="colors-sub-container">
                     {colors.slice(0, this.props.numWindows).map((color, idx) => (
                         <li
+                            onClick={this.handleOpenModal(color.value)}
                             key={idx}>
                             <div
                                 className="indv-color"

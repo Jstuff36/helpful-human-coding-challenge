@@ -14,10 +14,11 @@ class Colors extends React.Component {
             <div>
                 <NavBar/>
                 <div className="list-view-main-container">
-                    <SideBar/>
+                    <SideBar
+                        colors={this.props.colors}/>
                     <ColorsListView
-                        allColors = {this.props.allColors}
-                        colors = {this.props.colors}/>
+                        allColors={this.props.allColors}
+                        colors={this.props.colors}/>
                 </div>
             </div>
         );
