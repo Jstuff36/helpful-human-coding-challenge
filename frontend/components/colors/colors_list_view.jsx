@@ -42,9 +42,6 @@ class ColorsListView extends React.Component {
                 });
             }
         } 
-        // .then( res => {
-        //     console.log(res);
-        // });
     }
 
     getDims() {

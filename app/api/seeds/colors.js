@@ -1,6 +1,7 @@
-// taken from https://github.com/bahamas10/css-color-names/blob/master/css-color-names.json
+// seeds taken from https://github.com/bahamas10/css-color-names/blob/master/css-color-names.json
+// This is a poor way to seed but to seed database simply uncomment the code at the end of this file and run colorArr.forEach(  (color) => Utils.addColor(color))
 
-{
+let colors = {
     "aliceblue": "#f0f8ff",
     "antiquewhite": "#faebd7",
     "aqua": "#00ffff",
@@ -149,4 +150,13 @@
     "whitesmoke": "#f5f5f5",
     "yellow": "#ffff00",
     "yellowgreen": "#9acd32"
-}
+};
+
+// import * as Utils from '../../frontend/util/colors_api_util';
+// window.Utils = Utils;
+// let colorArr = Object.keys(colors).map((k) => ({
+//     "name": k,
+//     "value": colors[k
+//     ]
+// }));
+// window.colorArr = colorArr;
