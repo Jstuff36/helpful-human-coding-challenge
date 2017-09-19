@@ -7,9 +7,12 @@ const bodyParser = require('body-parser');
 
 const MongoClient = require('mongodb').MongoClient;
 
-MongoClient.connect('mongodb://username1:password123@ds139954.mlab.com:39954/colors-db-hh', (err, db) => {
+mongoose.connect('mongodb://username1:password123@ds139954.mlab.com:39954/colors-db-hh', { useMongoClient: true }, (err, db) => {
     if (err) return console.log(err);
     console.log(db);
+    app.listen(port, () => {
+        console.log('running on: ' + port);
+    });
 });
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -18,7 +21,3 @@ app.use(express.static('public'));
 
 let routes = require('./api/routes/colorsRoutes');
 routes(app);
-
-app.listen(port, () => {
-    console.log('running on: ' + port);
-});

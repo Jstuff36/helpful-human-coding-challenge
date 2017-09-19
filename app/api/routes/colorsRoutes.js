@@ -2,7 +2,7 @@
 const path = require('path');
 
 module.exports = function (app) {
-    var colors = require('../controllers/colorsController');
+    let colors = require('../controllers/colorsController');
 
     app.get('/', function (req, res) {
         res.sendFile(path.resolve(__dirname + '/../../index.html'));

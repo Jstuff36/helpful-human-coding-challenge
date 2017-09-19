@@ -13,6 +13,7 @@ exports.list_all_colors = function (req, res) {
 };
 
 exports.add_a_color = function (req, res) {
+    console.log('hi');
     const newColor = new Color(req.body);
     console.log(newColor);
     newColor.save(function (err, color) {
