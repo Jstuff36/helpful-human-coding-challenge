@@ -6,6 +6,7 @@
     justify-content: space-around;
     min-width: 280px;
     box-shadow: 0 0px 5px #4e4e4e;    
+    height: calc(100vh - 80px);
 }
 
 .button-container {
@@ -39,4 +40,8 @@
     margin: 9px 0;
     font-size: 18px;
     color: rgba(71, 71, 71, 1);
+}
+
+.colors-side-bar-container > li:hover {
+    cursor: pointer;
 }

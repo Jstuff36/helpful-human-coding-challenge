@@ -83,7 +83,8 @@ input[type="submit"] {
   align-items: center;
   justify-content: space-around;
   min-width: 280px;
-  box-shadow: 0 0px 5px #4e4e4e; }
+  box-shadow: 0 0px 5px #4e4e4e;
+  height: calc(100vh - 80px); }
 
 .button-container {
   flex: 0.15;
@@ -113,6 +114,9 @@ input[type="submit"] {
   margin: 9px 0;
   font-size: 18px;
   color: #474747; }
+
+.colors-side-bar-container > li:hover {
+  cursor: pointer; }
 
 .list-view-container {
   display: flex;
