@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import sizeMe from 'react-sizeme';
+import ReactPaginate from 'react-paginate';
 
 import MultiColors from './display_multi_colors';
 
@@ -8,12 +8,22 @@ class ColorsListView extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            colors: null
+            colors: null,
+            offset: 0
         };
 
         this.getDims = this.getDims.bind(this);
         this.calcNumWindows = this.calcNumWindows.bind(this);
         this.calcPageNumbers = this.calcPageNumbers.bind(this);
+        this.handlePageClick = this.handlePageClick.bind(this);
+    }
+
+    handlePageClick(data) {
+        let selected = data.selected;
+        let offset = Math.ceil(selected * this.props.perPage);
+
+        this.setState({ offset: offset }, () => {
+        });
     }
 
     componentDidMount() {
@@ -38,12 +48,14 @@ class ColorsListView extends React.Component {
     }
 
     getDims() {
-            let sideBarWidth = document.querySelector('.side-bar-container').clientWidth;
-            let navBarHeight = document.querySelector('.navbar-container').clientHeight;
-            let width = window.innerWidth - sideBarWidth;
-            let height = window.innerHeight - navBarHeight;
-            return([width, height]);
+        let sideBarWidth = document.querySelector('.side-bar-container').clientWidth;
+        let navBarHeight = document.querySelector('.navbar-container').clientHeight;
+        let width = window.innerWidth - sideBarWidth;
+        let height = window.innerHeight - navBarHeight;
+        return([width, height]);
     }
+
+
 
     calcNumWindows(width, height) {
         return Math.floor(width / 225) * Math.floor(height / 194);
@@ -54,7 +66,24 @@ class ColorsListView extends React.Component {
         for (let i = 1; i < Math.ceil(colors.length / numWindows); i++) {
             numNumbers.push(i);
         }
-        return numNumbers;
+
+        let numbersToDisplay;
+        if (numNumbers.length > 5) {
+            numbersToDisplay = [1, 2, 3, 4, 5];
+        } else {
+            numbersToDisplay = numNumbers;
+        }
+        
+        return [numNumbers, numbersToDisplay];
+    }
+
+    handlePageClick(number) {
+        return (e) => {
+            console.log(e.currentTarget.value);
+            this.setState({
+                currentPage: number
+            });
+        };
     }
 
     render() {
@@ -64,29 +93,50 @@ class ColorsListView extends React.Component {
             let colors = this.state.colors;
             let [width, height] = this.getDims();
             let numWindows = this.calcNumWindows(width, height);
-            let numNumbers = this.calcPageNumbers(colors, numWindows);
+            let [numNumbers, numbersToDisplay] = this.calcPageNumbers(colors, numWindows);
             return( 
                 <div className="list-view-container">
                     <MultiColors
                         colors={colors}
                         numWindows={numWindows}
                     />
-                    <ul className="numbers-container">
-                        {numNumbers.map((number, idx) => (
-                            <li key={idx}>
-                                {number}
-                            </li>
-                        ))}
-                    </ul>
+                    <ReactPaginate previousLabel={"previous"}
+                        nextLabel={"next"}
+                        breakLabel={<a href="">...</a>}
+                        breakClassName={"break-me"}
+                        pageCount={this.state.pageCount}
+                        marginPagesDisplayed={2}
+                        pageRangeDisplayed={5}
+                        onPageChange={this.handlePageClick}
+                        containerClassName={"numbers-container"}
+                        subContainerClassName={"pages pagination"}
+                        activeClassName={"active"} />
+
+                    
                 </div>
             );
         }
     }
 }
 
-const sizeMeConfig = {
-    monitorWidth: true,
-    monitorHeight: true
-};
-const sizeMeHOC = sizeMe(sizeMeConfig);
-export default sizeMeHOC(ColorsListView);
+{/* <ul className="numbers-container">
+    {numbersToDisplay.map((number, idx) => (
+        <li
+            onClick={this.handlePageClick(number)}
+            key={idx}>
+            {number}
+        </li>
+    ))}
+    {numNumbers.length > 5 ?
+        <li
+            onClick={this.handlePageClick(numNumbers[numNumbers.length - 1])}>
+            {"Last"}
+        </li>
+        :
+        <li>
+            {""}
+        </li>
+    }
+</ul> */}
+
+export default ColorsListView;
