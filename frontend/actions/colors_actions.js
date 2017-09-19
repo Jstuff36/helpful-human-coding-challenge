@@ -1,16 +1,25 @@
 import * as APIUti from '../util/colors_api_util';
 
 export const RECEIVE_COLORS = 'RECEIVE_COLORS';
-export const RECEIVE_COLOR = 'RECEIVE_COLOR';
+export const RECEIVE_SINGLE_COLOR = 'RECEIVE_SINGLE_COLOR';
 
 export const receiveColors = (colors) => ({
     type: RECEIVE_COLORS,
     colors
 });
 
+export const receiveSingleColor = (color) => ({
+    type: RECEIVE_SINGLE_COLOR,
+    color
+});
+
 
 export const allColors = () => dispatch => {
     dispatch(receiveColors(colorArr));
+};
+
+export const singleColor = (color) => dispatch => {
+    dispatch(receiveSingleColor(color));
 };
 
 // export const allColors = () => dispatch => {

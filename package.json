@@ -16,6 +16,7 @@
     "node-sass": "^4.5.3",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "react-modal": "^2.3.2",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "react-sizeme": "^2.3.4",
