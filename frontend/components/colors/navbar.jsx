@@ -4,7 +4,33 @@ import ReactDOM from 'react-dom';
 class NavBar extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            search: ""
+        };
+
+        this.updateInput = this.updateInput.bind(this);
     }
+
+    updateInput(field) {
+        return e => {
+            // console.log('hi');
+            this.setState({
+                [field]: e.currentTarget.value.toLowerCase()
+                });
+                this.sendSearch(this.refs.query);
+            };
+    }
+
+    sendSearch(query) {
+        let filteredColors= [];
+        this.props.colors.forEach( (color) => {
+            if (color['name'].includes(query.value)) {
+                filteredColors.push(color);
+            }
+        });
+        this.props.searchColors(filteredColors);
+    }
+
 
     render() {
         return(
@@ -20,9 +46,12 @@ class NavBar extends React.Component {
                 </div>
                 <div>
                     <input 
+                        ref="query"
                         type="text"
                         className="search-bar edit-placeholder"
-                        placeholder="Search"/>
+                        placeholder="Search"
+                        onChange={this.updateInput('search')}
+                        />
                 </div>
             </div>
         );

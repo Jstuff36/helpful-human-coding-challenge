@@ -22,9 +22,15 @@ class ColorsListView extends React.Component {
 
     componentWillReceiveProps(nextProps) {
         if (this.props.colors !== nextProps.colors) {
-            this.setState( {
-               colors: nextProps.colors 
-            });
+            if (nextProps.colorsFiltered && nextProps.colorsFiltered.length > 0) {
+                this.setState({
+                    colors: nextProps.colorsFiltered
+                });
+            } else {
+                this.setState( {
+                   colors: nextProps.colors 
+                });
+            }
         } 
         // .then( res => {
         //     console.log(res);

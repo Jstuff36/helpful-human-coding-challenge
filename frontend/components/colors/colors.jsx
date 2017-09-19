@@ -12,12 +12,16 @@ class Colors extends React.Component {
     render() {
         return(
             <div>
-                <NavBar/>
+                <NavBar
+                    searchColors={this.props.searchColors}
+                    colors={this.props.colors}
+                />
                 <div className="list-view-main-container">
                     <SideBar
                         colors={this.props.colors}/>
                     <ColorsListView
                         allColors={this.props.allColors}
+                        colorsFiltered={this.props.colorsFiltered}
                         colors={this.props.colors}/>
                 </div>
             </div>
