@@ -16,6 +16,7 @@ class SideBar extends React.Component {
         this.handleOpenModal = this.handleOpenModal.bind(this);
         this.handleCloseModal = this.handleCloseModal.bind(this);
         this.pickRandomColor = this.pickRandomColor.bind(this);
+        this.clearSearch = this.clearSearch.bind(this);
     }
 
     pickRandomColor() {
@@ -34,6 +35,10 @@ class SideBar extends React.Component {
             });
             this.props.searchColors(filteredColors);
         };
+    }
+
+    clearSearch() {
+        this.props.searchColors([]);
     }
 
     handleOpenModal(content) {
@@ -77,6 +82,11 @@ class SideBar extends React.Component {
                             {color}
                         </li>
                     ))}
+                    <li
+                        onClick={this.clearSearch}
+                    >
+                        Clear Color Filter
+                    </li>
                 </ul>
                 <Modal
                     

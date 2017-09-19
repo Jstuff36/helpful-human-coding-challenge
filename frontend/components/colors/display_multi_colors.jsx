@@ -32,6 +32,7 @@ class MultiColors extends React.Component {
 
     render() {
         const colors = this.props.colors;
+        const { numWindows, windowNum} = this.props;
         return(     
             <div className="colors-mock-container">
                 <Modal
@@ -47,7 +48,7 @@ class MultiColors extends React.Component {
                     />
                 </Modal>
                 <ul className="colors-sub-container">
-                    {colors.slice(0, this.props.numWindows).map((color, idx) => (
+                    {colors.slice(windowNum * numWindows, (windowNum + 1) * numWindows).map((color, idx) => (
                         <li
                             onClick={this.handleOpenModal(color.value)}
                             key={idx}>

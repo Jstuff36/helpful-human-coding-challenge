@@ -165,7 +165,16 @@ input[type="submit"] {
   margin-top: -25px; }
 
 .numbers-container > li {
-  margin: 0 8px; }
+  margin: 0 8px;
+  border-bottom: solid 1px transparent;
+  font-weight: 100; }
+
+.numbers-container > li:hover {
+  cursor: pointer; }
+
+.active-page-number {
+  border-bottom: solid black 1px !important;
+  font-weight: 900 !important; }
 
 .modal {
   background: white;
