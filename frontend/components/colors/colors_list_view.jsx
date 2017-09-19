@@ -76,7 +76,6 @@ class ColorsListView extends React.Component {
 
     handlePageClick(number) {
         return (e) => {
-            console.log(e.currentTarget.value);
             this.setState({
                 currentPage: number
             });

@@ -5,7 +5,6 @@ Color = mongoose.model('Colors');
 
 exports.list_all_colors = function (req, res) {
     Color.find({}, function (err, colors) {
-        console.log('in colors controller');
         if (err)
             res.send(err);
         res.json(colors);

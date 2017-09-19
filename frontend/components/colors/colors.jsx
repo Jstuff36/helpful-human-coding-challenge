@@ -18,6 +18,7 @@ class Colors extends React.Component {
                 />
                 <div className="list-view-main-container">
                     <SideBar
+                        searchColors={this.props.searchColors}
                         colors={this.props.colors}/>
                     <ColorsListView
                         allColors={this.props.allColors}

@@ -7,6 +7,7 @@ import DetailColorModal from './detail_color_modal';
 class SideBar extends React.Component {
     constructor(props) {
         super(props);
+
         this.state = {
             showModal: false,
             modalContent: []
@@ -17,10 +18,28 @@ class SideBar extends React.Component {
         this.pickRandomColor = this.pickRandomColor.bind(this);
     }
 
+    pickRandomColor() {
+        let randoColor = this.props.colors[Math.floor(Math.random() * this.props.colors.length)];
+        this.handleOpenModal(randoColor['value'])(); 
+    }
+
+    handleClick(colorClicked) {
+        return (e) => {
+            e.preventDefault();
+            let filteredColors = [];
+            this.props.colors.forEach( (color) => {
+                if (color['name'].includes(colorClicked.toLowerCase())) {
+                    filteredColors.push(color);
+                }
+            });
+            this.props.searchColors(filteredColors);
+        };
+    }
+
     handleOpenModal(content) {
         return () => {
             this.setState({
-                showModal: true,
+                 showModal: true,
                 modalContent: content
             });
         };
@@ -28,12 +47,6 @@ class SideBar extends React.Component {
 
     handleCloseModal() {
         this.setState({ showModal: false });
-    }
-
-    pickRandomColor() {
-        let randoColor = this.props.colors[Math.floor(Math.random() * this.props.colors.length)];
-        console.log(randoColor);
-        this.handleOpenModal(randoColor['value'])();  
     }
     
     render() {
@@ -47,7 +60,6 @@ class SideBar extends React.Component {
             'Brown': '#f4a460', 
             'Gray': '#7f7f7f'
         };
-
         return(
             <div className="side-bar-container">
                 <div className="button-container">
@@ -61,12 +73,13 @@ class SideBar extends React.Component {
                     {Object.keys(sideColors).map( (color, idx) => (
                         <li
                             key={idx}
-                            onClick={this.handleOpenModal(sideColors[color])}>
+                            onClick={this.handleClick(color)}>
                             {color}
                         </li>
                     ))}
                 </ul>
                 <Modal
+                    
                     isOpen={this.state.showModal}
                     className="modal"
                     contentLabel="Color Detail View"
