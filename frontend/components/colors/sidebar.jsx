@@ -73,13 +73,6 @@ class SideBar extends React.Component {
                         Random Color
                     </button>
                 </div>
-                <div
-                    className="button-container"
-                    onClick={this.clearSearch}>
-                    <button>
-                        Clear Color Filter
-                    </button>
-                </div>
                 <ul className="colors-side-bar-container">
                     {Object.keys(sideColors).map( (color, idx) => (
                         <li
@@ -88,6 +81,10 @@ class SideBar extends React.Component {
                             {color}
                         </li>
                     ))}
+                    <li
+                        onClick={this.clearSearch}>
+                        All Colors
+                    </li>
                 </ul>
                 <Modal
                     
