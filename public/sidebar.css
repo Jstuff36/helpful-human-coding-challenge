@@ -5,8 +5,7 @@
   align-items: center;
   justify-content: space-around;
   min-width: 280px;
-  box-shadow: 0 0px 5px #4e4e4e;
-  height: calc(100vh - 80px); }
+  box-shadow: 0 0px 5px #4e4e4e; }
 
 .button-container {
   flex: 0.15;
@@ -24,13 +23,16 @@
   border-radius: 7px;
   text-align: center;
   font-weight: bold;
-  font-size: 20px; }
+  font-size: 20px;
+  z-index: 3; }
 
 .colors-side-bar-container {
   display: flex;
   flex-direction: column;
   flex: 1;
-  width: 80%; }
+  width: 80%;
+  overflow: scroll;
+  padding-top: 10px; }
 
 .colors-side-bar-container > li {
   margin: 9px 0;

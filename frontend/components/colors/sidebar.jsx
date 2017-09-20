@@ -33,6 +33,7 @@ class SideBar extends React.Component {
                     filteredColors.push(color);
                 }
             });
+            console.log(filteredColors);
             this.props.searchColors(filteredColors);
         };
     }
@@ -69,9 +70,15 @@ class SideBar extends React.Component {
             <div className="side-bar-container">
                 <div className="button-container">
                     <button 
-                        onClick={this.pickRandomColor}
-                        className="random-color-button">
+                        onClick={this.pickRandomColor}>
                         Random Color
+                    </button>
+                </div>
+                <div
+                    className="button-container"
+                    onClick={this.clearSearch}>
+                    <button>
+                        Clear Color Filter
                     </button>
                 </div>
                 <ul className="colors-side-bar-container">
@@ -82,11 +89,6 @@ class SideBar extends React.Component {
                             {color}
                         </li>
                     ))}
-                    <li
-                        onClick={this.clearSearch}
-                    >
-                        Clear Color Filter
-                    </li>
                 </ul>
                 <Modal
                     

@@ -5,8 +5,7 @@
     align-items: center;
     justify-content: space-around;
     min-width: 280px;
-    box-shadow: 0 0px 5px #4e4e4e;    
-    height: calc(100vh - 80px);
+    box-shadow: 0 0px 5px #4e4e4e;  
 }
 
 .button-container {
@@ -27,6 +26,7 @@
     text-align: center;
     font-weight: bold;
     font-size: 20px;
+    z-index: 3;
 }
 
 .colors-side-bar-container {
@@ -34,6 +34,8 @@
     flex-direction: column;
     flex: 1;
     width: 80%;
+    overflow: scroll;
+    padding-top: 10px;
 }
 
 .colors-side-bar-container > li {

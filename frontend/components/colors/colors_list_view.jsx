@@ -66,7 +66,7 @@ class ColorsListView extends React.Component {
     }
 
     calcNumWindows(width, height) {
-        return Math.floor(width / 225) * Math.floor(height / 194);
+        return Math.floor(width / 225) * Math.floor(height / 215);
     }
 
     handlePageClick(data) {
@@ -94,7 +94,7 @@ class ColorsListView extends React.Component {
                         breakLabel={<a href="">...</a>}
                         breakClassName={"break-me"}
                         pageCount={ numPages }
-                        marginPagesDisplayed={2}
+                        marginPagesDisplayed={1 }
                         pageRangeDisplayed={5}
                         onPageChange={this.handlePageClick}
                         containerClassName={"numbers-container"}
