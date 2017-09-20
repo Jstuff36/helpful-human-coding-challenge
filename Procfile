@@ -1,1 +1,1 @@
-web: node ./frontend/pretty_colors.jsx
+web: node server.js
