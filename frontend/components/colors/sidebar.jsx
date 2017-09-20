@@ -33,7 +33,6 @@ class SideBar extends React.Component {
                     filteredColors.push(color);
                 }
             });
-            console.log(filteredColors);
             this.props.searchColors(filteredColors);
         };
     }

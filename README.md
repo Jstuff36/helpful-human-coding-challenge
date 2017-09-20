@@ -1,69 +1,61 @@
-# Helpful Human Applicant Interview Challenge
+# Pretty Color Picker 5000
 
-Welcome to Helpful Human's at home proficiency challenge! This challenge gauges your knowledge on a few different metrics that we use, in part, to evaluate your skills. In this repo, you will find the assets that are required to replicate the design that is also included in this repo. Both .sketch and .png assets are available.
+URL: 
 
-To get started, clone this repo. Add your work to it in whatever structure you prefer, then push it to your own, renamed repo. When you are finished, follow the instructions at the end of this document.
+![landing-page](./readme-pics/Landing-page.png)
 
-This challenge has different milestones.
+Pretty Color Picker 5000 is a web application built on the MERN (MongoDB, Express.js, React.js, MongoDB) stack that allows developers, designer, and aliens to quickly find that perfect color from a database of over 150 colors plus thousands of shades.
 
-## Core
-Stated briefly, the core goal is to create a simple but functional app that has a data, view and logic layer. The app will display color swatches, and that's about it!
+## Contents
+**Features**
 
-The core goals should be completed in full. 
+* Search by name of a color
+* Detail view of selected color with various shades of the selected color
+* Displays hex values of each color
+* Dynamically renders the correct number of color swatches that can fit on the screen and the corresponding number of pages
+* Responsive design
+* Node backend and Mongo database full of colors
 
-## Stretch
-The stretch goals can also be met if you choose to do so. Not completing the stretch goals does not disqualify you in any way nor will it lead to a disadvantage in comparison to other applicants.
+## Search
 
-## Bonus Stretch
-Bonus stretch goals inherit properties of stretch goals but completing these goals will say to us, "I believe the code I've written for the core goals and the stretch goals is production ready".
+![search](./readme-pics/search_functionality.gif)
 
-## Additional Information
-An applicant completing a well thought out solution to the core challenges is just as meaningful to us as a solution that completes all goals but is not implemented very well.
+Upon loading, the landing page queries the database to retrieve all colors which it stores in a redux slice of state. This allows the application to implement searches on the client thus reducing server load. These searches are then stored in their own redux slice of state. An example search can be seen above. 
 
-If you'd like to implement additional functionality, or change the functionality of this challenge, feel free but be prepared to discuss your reasoning for doing so. We like critical thinking. We don't like improper implementation without reason.
+## Detail color view
 
-## Time
-Keep track of how much time you spent on the challenge but also feel free to spend as much time as you want. Your time is very valuable and we are thankful you're taking the time demonstrate your skills for us.
+![detail-view](./readme-pics/detail-view.png)
 
+A click on any color will render a modal displaying the color in more detail. This includes four different shadings of the color with the corresponding hex values. 
 
-## Core Goals
-- Replicate design
-  - [Font](./FONT.md)
-  - Styles
-  - Iconography
-- Replicate functionality
-  - Create a database of colors (minimum 100)
-  - Paginate your data to show a certain number of swatches at a time
-  - Display both the color swatch and the label of the color
-  - Ability to select random color and modify view accordingly
-  - Clicking swatch changes to color detail view
+## Dynamically renders number of color swatches and includes a responsive design
 
-## Stretch Goals
-- Design
-  - Make it responsive
-- Functionality
-  - Generate color list from a script
+![rendering](./readme-pics/dynamic-rendering.gif)
 
-## Bonus Stretch Goals
-- Design
-  - Include interaction design
-  - Add tints/shades in detail view
+The number of swatches to display and the corresponding page numbers are calculated by using JavaScript to get the demensions of the screen. Then using the following equation
 
-- Functionality
-  - Add search functionality
-  - Color generation script guarantees same colors and order
-  - Group by color (Make sidebar menu functional)
-
-- Data
-  - Fetch data with GraphQL
+    return Math.floor(width / 225) * Math.floor(height / 215);
 
 
-## Deliverables
-In your email submission response to the test invitation from AngelList, please include the following:
-- Link to your repo
-- URL to your hosted App (Use a free hosting service of your choice)
-- [Include a Donger](http://dongerlist.com/) that best represents your state of mind when complete
+the correct number swatches to display can be calculated. By add an event listener and taking advantage of Reacts lifecycle methods the page numbers and number of swatches can be made to recalculate everytime the size of the page changes.
 
-Thanks and we look forward to your submission!
+## Backend
 
-ლ ( ◕  ᗜ  ◕ ) ლ
+Node.js was used for the backend because of the fact that an app can be spun up very quick while keeping the unnecessary baggage to a minimum. Modulazation was used to make the code more maintainable and readable by splitting the [routes](./app/api/routes/colorsRoutes.js), [controllers](./app/api/controllers/colorsController.js), [models](./app/api/models/colorsModel.js), and the [server](./app/server.js) into their own files. A mongo database is used to store all the colors as key value pairs shown below.
+
+```
+{
+    "_id": {
+        "$oid": "59c164466422616c44e6d956"
+    },
+    "name": "aliceblue",
+    "value": "#f0f8ff",
+    "Created_date": {
+        "$date": "2017-09-19T18:39:02.055Z"
+    },
+    "__v": 0
+}
+```
+
+The frontend communicates with the backend via ajax request stored in the [util file](./frontend/util/colors_api_util.js).
+

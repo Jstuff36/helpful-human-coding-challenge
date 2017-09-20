@@ -13,7 +13,6 @@ class NavBar extends React.Component {
 
     updateInput(field) {
         return e => {
-            // console.log('hi');
             this.setState({
                 [field]: e.currentTarget.value.toLowerCase()
                 });

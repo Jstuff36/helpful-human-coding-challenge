@@ -33,6 +33,7 @@ class ColorsListView extends React.Component {
                 let [width, height] = this.getDims(); 
                 let numWindows = this.calcNumWindows(width, height);        
                 this.setState({
+                    windowNum: 0,
                     numWindows: numWindows,
                     colors: nextProps.colorsFiltered
                 });
