@@ -1,6 +1,6 @@
 # Pretty Color Picker 5000
 
-URL: 
+URL: [Live-link](https://pretty-colors-hh.herokuapp.com/#/)
 
 ![landing-page](./readme-pics/Landing-page.png)
 
